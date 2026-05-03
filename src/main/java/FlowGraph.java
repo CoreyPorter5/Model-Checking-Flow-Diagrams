@@ -43,6 +43,7 @@ public class FlowGraph {
 
 
     public void print() {
+        System.out.println("-----------Flow Graph-----------");
         System.out.println("Nodes:");
         for (Node node : nodes.values()) {
             System.out.println(
