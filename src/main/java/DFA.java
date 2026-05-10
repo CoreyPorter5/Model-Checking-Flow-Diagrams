@@ -87,6 +87,30 @@ public class DFA {
         return this.alphabet;
     }
 
+    public Set<String> getStates() {
+        return states;
+    }
+
+    public Set<String> getAcceptingStates() {
+        return acceptingStates;
+    }
+
+    public String getStartState() {
+        return startState;
+    }
+
+    public Map<String, Map<String, String>> getTransitions() {
+        return transitions;
+    }
+
+    public String getTransition(String fromState, String label) {
+        Map<String, String> outgoing = transitions.get(fromState);
+        if (outgoing == null) {
+            return null;
+        }
+        return outgoing.get(label);
+    }
+
 
 
 

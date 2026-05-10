@@ -34,7 +34,7 @@ public class FlowGraphParser {
 
     public static void parseEdgeLine(String line, FlowGraph flowGraph) {
         //edge v0 v1 eps
-        String[] splitLine = line.split(" ");
+        String[] splitLine = line.split("\\s+");
         String from = splitLine[1];
         String to = splitLine[2];
         String label = splitLine[3];
@@ -46,12 +46,21 @@ public class FlowGraphParser {
 
     public static void parseNodeLine(String line, FlowGraph flowGraph) {
         //node v0 meth(main) entry
-        String[] splitLine = line.split(" ");
+        String[] splitLine = line.split("\\s+");
+
         String nodeId = splitLine[1];
-        boolean isEntry = splitLine[3].equals("entry");
-        boolean isReturn = !isEntry;
         String methodName = extractMethodName(splitLine[2]);
 
+        boolean isEntry = false;
+        boolean isReturn = false;
+        if (splitLine.length >= 4) {
+            String flag = splitLine[3].trim().toLowerCase();
+            if (flag.equals("entry")) {
+                isEntry = true;
+            } else if (flag.equals("ret") || flag.equals("return")) {
+                isReturn = true;
+            }
+        }
 
         Node node = new Node(nodeId, methodName, isEntry, isReturn);
         flowGraph.addNode(node);
