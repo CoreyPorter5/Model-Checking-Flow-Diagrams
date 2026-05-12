@@ -97,14 +97,18 @@ public class FlowGraph {
         return this.methods;
     }
 
-    public Set<Edge> getAllEdges(){
+    public Set<Edge> getAllEdges() {
         Set<Edge> edges = new HashSet<>();
 
-        for (List<Edge> edgeList : outgoing.values()){
+        for (List<Edge> edgeList : outgoing.values()) {
             edges.addAll(edgeList);
         }
 
         return edges;
+    }
+
+    public String getEntryNodeOfMethod(String method) {
+        return entryNode.get(method);
     }
 
     public Set<String> getEdgeLabels() {
