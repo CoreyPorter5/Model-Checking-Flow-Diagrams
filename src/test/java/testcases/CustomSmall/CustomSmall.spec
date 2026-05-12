@@ -1,0 +1,10 @@
+=>(q0)-eps->(q0)
+(q0)-main->(q0)
+(q0)-ping->(q1)
+(q1)-tick->(q1)
+(q1)-ok->[q2]
+[q2]-ping->[q2]
+[q2]-tick->[q2]
+[q2]-ok->[q2]
+[q2]-main->[q2]
+[q2]-eps->[q2]
